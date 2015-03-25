@@ -1,5 +1,5 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 CourierNewPSMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
@@ -14,5 +14,8 @@
 \
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural
 \ls1\ilvl0\cf0 {\listtext	1.	}Add some text fields and a button, with auto-layout constraints for resizing. Use placeholder text to remember which field is which, as well as an aid to the user.\
-{\listtext	2.	}Change the types of keyboards for the text fields, including setting the Secure Text Entry checkbox for the password field. Remember to disable auto-capitalization, auto-correction, and spell checking.\
+{\listtext	2.	}Change the type of keyboard for the text fields in the storyboard, including setting the Secure Text Entry checkbox for the password field. Remember to disable auto-capitalization, auto-correction, and spell checking.\
+{\listtext	3.	}Declare ViewController as implementing UITextFieldDelegate (
+\f1 ViewController : UIViewController, UITextFieldDelegate
+\f0 ), add placeholder methods for some of the UITextFieldDelegate methods, and make ViewController the delegate of all the text fields in the storyboard.\
 }
