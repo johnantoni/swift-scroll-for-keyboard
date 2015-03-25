@@ -36,6 +36,7 @@
 		EA02B88E1AC2339B00B59A70 /* ScrollForKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrollForKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA02B8931AC2339B00B59A70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA02B8941AC2339B00B59A70 /* ScrollForKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollForKeyboardTests.swift; sourceTree = "<group>"; };
+		EA02B89E1AC2340400B59A70 /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 		EA02B87B1AC2339B00B59A70 /* ScrollForKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				EA02B89E1AC2340400B59A70 /* Readme.rtf */,
 				EA02B87E1AC2339B00B59A70 /* AppDelegate.swift */,
 				EA02B8801AC2339B00B59A70 /* ViewController.swift */,
 				EA02B8821AC2339B00B59A70 /* Main.storyboard */,
