@@ -20,4 +20,5 @@
 \f0 ), add placeholder methods for some of the UITextFieldDelegate methods, and make ViewController the delegate of all the text fields in the storyboard.\
 {\listtext	4.	}Customize the name of the Return key in the storyboard, set the tags on the text fields (to 1, 2, and 3) in the storyboard, and added logic in textFieldShouldReturn to move to the next text field or act like tapping the Create Account button. Restricted username and password length to 12 characters. Added an action for the Create Account button.\
 {\listtext	5.	}Add a logo on top that will cause visibility issues when the keyboard is shown.\
+{\listtext	6.	}Select all the text fields, the logo, and the button simultaneously (using shift-click in the storyboard editor). Embed them in a view (Editor menu -> Embed In -> View). Recreate the auto-layout constraints. Embed that view in a scroll view. Add top/bottom/leading/trailing constraints from the view to the scroll view it's in. Add similar constraints from the scroll view to the top-level view. Use "Resolve Auto Layout Issues" -> "All Views in View Controller" to your advantage. This can be a painful step.\
 }
