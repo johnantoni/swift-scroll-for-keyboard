@@ -15,20 +15,69 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //   textField: The text field being typed in (helpful to distinguish when you have a bunch)
         //   range: The portion of text that is selected and will be replaced
         //   string: The text the user is entering (usually one character for keyboard, but can also be a paste)
-        println("Replacing range \(range.location) + \(range.length) with \(string)")
 
-        // Return false if you want to ignore what the user typed/pasted.
-        return true
+        // We don't place any restrictions on the e-mail field, which has tag == 2
+        if textField.tag == 2 {
+            return true;
+        }
+
+        // The meaning of "length" isn't simple when it comes to international text!
+        // Our simplified measurement:
+        // 1. Take the length of what's already in the text field.
+        var length = textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        // 2. Subtract the length of the current selection, which will be deleted.
+        length -= range.length
+        // 3. Add the length of the text being inserted.
+        length += string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+
+        // Restrict the length to 12 or less for username and password
+        return length <= 12
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // This is called whenever the user taps the Return key.
-        println("Return tapped")
+
+        if textField.tag == 1 {
+            // The first text field (username) activates the second (email)
+            self.view.viewWithTag(2)?.becomeFirstResponder()
+        }
+        else if textField.tag == 2 {
+            // The second text field (email) activates the third (password)
+            self.view.viewWithTag(3)?.becomeFirstResponder()
+        }
+        else if textField.tag == 3 {
+            // Return in the password text field acts as if "Create Account" was tapped
+            joinPressed(textField)
+        }
+        else {
+            println("You forgot to set a tag on the text fields in the storyboard!")
+        }
 
         // Generally, it doesn't matter what you return here. The docs say
         // “if the text field should implement its default behavior for the return button”
         // but there is no default behaviour.
         return true
+    }
+
+    @IBAction func joinPressed(sender: AnyObject?) {
+        // The "sender" parameter will be either the text field where return was tapped or the
+        // "Create Account" button. You could gather statistics on this to measure the
+        // effectiveness of an account creation page.
+
+        // Here's how you would distinguish which class "sender" is:
+        if let textField = sender as? UITextField {
+            println("Submitting via return in text field")
+        }
+        else if let button = sender as? UIButton {
+            println("Submitting via button")
+        }
+        else {
+            println("You've got something unexpected hooked up to the joinPressed: action!")
+        }
+
+        // Don't forget to dismiss the keyboard! This will find the appropriate text field
+        // and call resignFirstResponder() on it.
+        self.view.endEditing(true)
     }
 }
 
