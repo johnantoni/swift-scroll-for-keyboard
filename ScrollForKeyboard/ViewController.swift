@@ -10,6 +10,40 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    // We need a way of referring to our scroll view so we can resize it when the
+    // keyboard shows or hides
+    @IBOutlet var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Observe keyboard show/hide events
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+    }
+
+    // A special function called when an object is deleted
+    deinit {
+        // If an object observes notifications, it needs to stop observing notifications
+        // when it is deleted, or else crashes might happen.
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    func keyboardDidShow(notification: NSNotification) {
+        var frameValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
+        if let frame = frameValue?.CGRectValue() {
+            // Set a bottom "inset" on the scroll that acts like padding, so we can
+            // scroll what's hidden under the keyboard
+            self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.size.height, right: 0)
+        }
+    }
+
+    func keyboardDidHide(notification: NSNotification) {
+        // When the keyboard hides, we can get rid of the inset
+        self.scrollView.contentInset = UIEdgeInsetsZero
+    }
+
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // This is called whenever the user types in the field.
         //   textField: The text field being typed in (helpful to distinguish when you have a bunch)

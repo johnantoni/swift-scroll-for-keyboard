@@ -99,6 +99,9 @@
                             <constraint firstAttribute="trailing" secondItem="bEn-8d-mIT" secondAttribute="trailing" id="pwv-n3-gGM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="bEn-8d-mIT" id="6hg-if-YAQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
